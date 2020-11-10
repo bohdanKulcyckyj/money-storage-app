@@ -1,0 +1,547 @@
+// variables, mixins, etc.
+$primaryColor : #e0dcd1;
+$secondaryColor : black;
+$primaryTextColor : white;
+
+@mixin input_style($padding, $width) {
+    height: 40px;
+    width: $width;
+    padding: $padding;
+    border: none;
+    margin: 5px auto;
+}
+
+html, body, ::before, ::after {
+    width: 100%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    font-family: 'Lato';
+    box-sizing: border-box;
+}
+
+.hide {
+    display: none !important;
+}
+
+.differ {
+    border-bottom: 2px dashed white !important;
+    padding-bottom: 50px !important; 
+}
+
+body {
+    background-color: $primaryColor;
+
+}
+
+nav {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    h1 {
+        color: $primaryTextColor;
+        letter-spacing: 3px;
+        font-size: 15px;
+        i {
+            margin-right: 2px;
+            height: 100%;
+            color: rgb(247, 33, 33);
+        }
+    }
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    .active-link {
+        color: rgb(247, 33, 33);
+    }
+    span {
+        margin: 0 3px;
+        color: white;
+    }
+}
+
+header {
+    width: 100%;
+    height: 700px;
+    background-image: url(./images/money-v.2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-clip: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .head-wrapper {
+        width: 60%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 50px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-top-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+    h1 {
+        text-align: center;
+        color: white;
+        font-size: 25px;
+        line-height: 1.5;
+    }
+    p {
+        color: $primaryTextColor;
+        font-size: 20px;
+        line-height: 1.5;
+        text-align: center;
+    }
+    hr {
+        width: 50%;
+        margin: 20px auto 40px;
+        border: none;
+        border-top: 2px solid white;
+    }
+}
+
+.heading-container {
+    h1 {
+        color: $primaryTextColor;
+        background-color: rgba(0, 0, 0, 0.6);
+        text-align: center;
+        letter-spacing: 5px;
+        width: 100%;
+        padding: 30px;
+        i {
+            margin-right: 3px;
+            font-size: 2em;
+            height: 100%;
+            color:#edba2b;
+        }
+        span {
+            font-size: 2em;
+        }
+    }
+}
+
+.app-container {
+    width: 70%;
+    margin: 50px auto;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    .input-container {
+        background-color: #e0dcd1;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+        padding: 10px;
+        h2 {
+            margin: 0 auto 30px;
+            color: rgb(63, 189, 63);
+            font-size: 30px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif; 
+        }
+        input {
+            @include input_style(5px, 80%);
+        }
+        select {
+            @include input_style(5px, 80%);
+            cursor: pointer;
+        }
+        label {
+            @include input_style(0, 80%);
+            font: {
+                size: 22px;
+                weight: bold;
+            }
+            margin-bottom: 0;
+        }
+        button {
+            @include input_style(5px, 80%);
+            background-color: rgb(63, 189, 63);
+            color: white;
+            font-size: 25px;
+            border-radius: 10px;
+            margin-top: 15px;
+            width: 30%;
+            cursor: pointer;
+            &:hover {
+                background-color: rgba(63, 189, 63, 0.897);
+            }
+        }
+    }
+    .budget-container {
+        background-color: $primaryColor;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        padding: 10px 30px 10px;
+        .budget-item {
+            padding: 25px 15px 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            div {
+                font-weight: bold;
+                text-align: center;
+                margin-top: 30px;
+            }
+            .plus {
+                color: rgb(31, 170, 31);//color: rgb(63, 189, 63);
+            }
+            .minus {
+                color: rgb(206, 29, 29);
+            }
+            img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background-color: white;
+                padding: 10px;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+.summary-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    min-height: 300px; 
+    .summary {
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin: 0 auto;
+        padding: 10px 20px 40px;
+        width: 40%;
+        h1 {
+            color: $primaryTextColor;
+            font-size: 2em;
+            text-align: center;
+            width: 100%;
+            padding: 30px;
+        }
+        table {
+            color: black;
+            background-color: $primaryColor;
+            border: 2px solid black;
+            border-collapse: collapse;
+            td {
+                padding: 8px;
+                border: 2px solid black;
+                text-align: center;
+                button {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    cursor: pointer;
+                    background-color: transparent;
+                    border: none;
+                    padding: 5px;
+                }
+                i {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    color:#ac8721;
+                    font-size: 25px;
+                }
+            }
+        }
+        #remove-all {
+            color: $primaryTextColor;
+            background-color: transparent;
+            width: 15%;
+            font-size: 15px;
+            margin: 30px auto 0;
+            padding: 10px;
+            border: 1.5px solid white;
+            border-radius: 20px;
+            transition: 0.5 ease;
+            cursor: pointer;
+            &:hover {
+                color: black;
+                background-color: $primaryColor;
+            }
+        }
+    } 
+}
+
+.graph-container {
+    padding: 40px 40px 80px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    h1 {
+        margin-bottom: 30px;
+        font-size: 40px;
+        color: rgb(56, 52, 52);
+    }
+    p {
+        margin-bottom: 30px;
+    }
+    .chart-container {
+        width: 50% !important;
+        height: 60vh !important;
+        display: flex;
+        justify-self: center;
+        justify-content: center;
+        flex: 1;
+        .graph {
+            position: relative;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+    .chart-text {
+        flex: 1;
+        padding: 10px 0;
+        .chart-txt {
+            width: 70%;
+            margin: 0 auto;
+            a {
+                color: rgb(247, 33, 33);
+                color:#8a6e23;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px 0 60px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.5;
+    color: $primaryTextColor;
+    letter-spacing: 1.5px;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .media-container {
+        margin: 35px 0 0;
+        li {
+            display: inline;
+            letter-spacing: 3px;
+            margin: 0 25px;
+            i {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+//media queries
+
+@media only screen and (min-width: 2200px){
+    nav {
+        i {
+            margin-right: 1px;
+        }
+    }
+    header {
+        height: 900px;
+        .head-wrapper {
+            width: 50%;
+        }
+    }
+    .app-container {
+        width: 50%;
+    }
+    .summary {
+        min-width: 30%;
+    }
+    .chart-container {
+        width: 50% !important;
+        height: 80vh !important;
+    }
+}
+
+@media only screen and (max-width: 1270px){
+    header {
+        .head-wrapper {
+            width: 70%;
+        }
+    }
+    .app-container {
+        width: 90%;
+        .input-container {
+            padding: 0;
+            input, select, label {
+                @include input_style(5px, 80%);
+            }
+        }
+        .budget-container {
+            padding: 10px 15px;
+            .budget-item {
+                padding: 20px 5px 10px;
+                img {
+                    width: 125px;
+                    height: 125px;
+                }
+            }
+        }
+    }
+    .summary {
+        min-width: 60%;
+    }
+    .chart-container {
+        width: 60% !important;
+    }
+}
+
+@media only screen and (max-width: 992px){
+    header {
+        .head-wrapper {
+            width: 100%;
+            border-radius: 0;
+        }
+    }
+    .app-container {
+        width: 70%;
+        flex-direction: column-reverse;
+        .input-container {
+            input, select, label {
+                @include input_style(5px, 80%);
+            }
+        }
+        .budget-container {
+            padding: 10px 15px 50px;
+            .budget-item {
+                padding: 20px 0 10px;
+                img {
+                    width: 125px;
+                    height: 125px;
+                }
+            }
+        }
+    }
+    .summary {
+        min-width: 60%;
+    }
+    .graph-container {
+        flex-direction: column;
+    }
+    .chart-container {
+        width: 70% !important;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    header {
+        height: 400px;
+        .head-wrapper {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+        }
+    }
+    .heading-container {
+        h1 {
+            padding: 20px;
+        }
+    }
+    .app-container {
+        width: 100%;
+        margin: 30px auto;
+        flex-direction: column-reverse;
+        .input-container {
+            input, select, label {
+                @include input_style(5px, 75%);
+            }
+        }
+        .budget-container {
+            padding: 10px 70px 50px;
+            .budget-item {
+                padding: 20px 0 10px;
+                img {
+                    width: 125px;
+                    height: 125px;
+                }
+            }
+        }
+    }
+    .summary {
+        min-width: 75%;
+    }
+    .chart-container {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    * {
+        font-size: 17px;
+    }
+    header {
+        height: 500px;
+        .head-wrapper {
+            width: 100%;
+            border-radius: 0;
+        }
+    }
+    .heading-container {
+        h1 {
+            padding: 20px;
+            i, span {
+                font-size: 1.1em;
+            }
+        }
+    }
+    .app-container {
+        width: 100%;
+        margin: 30px auto;
+        flex-direction: column-reverse;
+        .input-container {
+            input, select, label {
+                @include input_style(5px, 75%);
+            }
+        }
+        .budget-container {
+            padding: 10px 10px 50px;
+            .budget-item {
+                padding: 20px 0 10px;
+                img {
+                    width: 90px;
+                    height: 90px;
+                }
+                #income, #expanses, #summary {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    .summary-container {
+        .summary {
+            width: 100%;
+            padding: 10px 0 40px;
+            #remove-all {
+                width: 20%;
+                padding: 5px;
+                border-radius: 15px;
+                font-size: 17px;
+            }
+        }
+    }
+    .chart-container {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+
+
+
+
+
+//@media only screen and (max-width: 600px){}

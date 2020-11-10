@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/webicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link type="text/css" rel=" stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <title>MoneyStorageApp | MLADÝ INVESTOR</title>
+</head>
+<body>
+    <nav>
+        <h1><a href="#"><span>Mladý investor</span></a></h1>
+        <div><a href="#" class="active-link">CZ</a><span>/</span><a href="index-en.html">EN</a></div>
+    </nav>
+    <header>    
+        <div class="head-wrapper">
+            <h1>Mějte rychlý a jednoduchý přehled o svém rozpočtu!</h1>
+            <hr/>
+            <p>Díky naší aplikaci, která graficky znázorní všechny vaše příjmy a vydaje se nyní nemusíte strachovat, že vám něco unikne. Krom přehledu se také naučíte snadno pracovat se svým rozpočtem a vylepšovat ho.</p>
+        </div>
+    </header>
+
+    <section class="heading-container">
+        <h1><i class="fas fa-chart-bar"></i><span>MoneyStorageApp</span></h1>
+    </section>
+    
+    <section class="app-container">
+        <div class="input-container">
+            <label for="select-type">Druh transakce:</label>
+            <select name="typ toku" id="select-type">
+                <option value="Příjmy">Příjmy</option>
+                <option value="Vydaje">Vydaje</option>
+            </select>
+            <label for="mount-name">Název:</label>
+            <input type="text" id="mount-name"/>
+            <label for="mount">Částka:</label>
+            <input type="number" id="mount" />
+            <button onclick="budgetApp();">Přidat</button>
+        </div>
+
+        <div class="budget-container">
+            <div class="budget-item">
+                <img src="images/ico1.png" alt="příjmy" />
+                <div class="">Příjmy</div>
+                <div id="income" class="plus"></div>
+            </div>
+            <div class="budget-item">
+                <img src="images/ico5.png" alt="vydaje" />
+                <div class="">Výdaje</div>
+                <div id="expanses" class="minus"></div>
+            </div>
+            <div class="budget-item">
+                <img src="images/ico6.png" alt="balance" />
+                <div class="">Bilance</div>
+                <div id="summary"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="summary-container hide">
+        <div class="summary">
+            <h1>Přehled</h1>
+            <table id="result-table"></table>
+            <button id="remove-all" onclick="clearMoneyStorage();">Reset</button>
+        </div>
+    </section>
+
+    <section class="graph-container hide">
+        <div class="chart-container">
+            <div class="graph">
+                <canvas id="myFirstChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-text">
+            <div class="chart-txt">
+                <h1>Ukázka všech výdajů a jejích jednotlivý podíl na celku</h1>
+                <p>Nelíbí se vám vysledek vašeho hospodaření?</p>
+                <p>Pak mate dvě možnosti. Zvýšit svůj příjem nebo snížít výdaje. O postupu u obou možností se mužete dočíst <a
+                        href="#">zde</a>.</p>
+                <p>Pokud jste nikdy neslyšeli o pojmu finanční gramotnost, doporučujeme si pečlivě přečíst články na toto téma.</p>
+                <p>Jestli se v tom ztrácíte a potřebujete pomoc, <a href="#">kontaktujte nás</a>. Pomůžeme vám sestavit finanční
+                    plán na míru a poradit ve složité situaci.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>| <a href="#">Mladý investor</a> | Poznej své peníze! | &copy; 2020 <a href="#">BohdanK</a> |</p>
+        <ul class="media-container">
+            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fab fa-github-square"></i></a></li>
+        </ul>
+    </footer>
+    <script async src="script.js"></script>
+    <script async src="charts.js"></script>
+</body>
+</html>
