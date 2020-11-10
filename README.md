@@ -1,1 +1,1 @@
-# Projekt kontroly finančního rozpočtu, na kterém jsem se učil více pracovat s JavaScriptem a SASS.
+# Projekt kontroly finančního rozpočtu, na kterém jsem se učil více pracovat se SASS a JavaScript.
