@@ -1,1 +1,1 @@
-# Můj první projekt na téma finančního rozpočetu
+# Projekt kontroly finančního rozpočtu, na kterém jsem se učil více pracovat s JavaScriptem a SASS.
