@@ -309,6 +309,10 @@ header hr {
   border-collapse: collapse;
 }
 
+.summary-container .summary table tr:hover {
+  background-color: #cfcbbf;
+}
+
 .summary-container .summary table td {
   padding: 8px;
   border: 2px solid black;
@@ -322,7 +326,7 @@ header hr {
   cursor: pointer;
   background-color: transparent;
   border: none;
-  padding: 5px;
+  padding: 6px 8px;
 }
 
 .summary-container .summary table td i {
@@ -337,10 +341,11 @@ header hr {
   color: white;
   background-color: transparent;
   width: 15%;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: 400;
   margin: 30px auto 0;
-  padding: 10px;
-  border: 1.5px solid white;
+  padding: 8px;
+  border: 2px solid white;
   border-radius: 20px;
   -webkit-transition: 0.5 ease;
   transition: 0.5 ease;

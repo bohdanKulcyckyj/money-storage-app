@@ -43,42 +43,46 @@ showSections();
 
 //hlavní funkce
 const budgetApp = () => {
-    if(chooseTransaction.options[chooseTransaction.selectedIndex].value === "Příjmy" && amountName.value !== "" && amount.value !== ""){
-        let income = {
-            type : "income",
-            name : amountName.value,
-            amount : parseInt(amount.value),
+    if(chooseTransaction.options[chooseTransaction.selectedIndex].value === "Příjmy" &&
+    amountName.value !== "" && amount.value !== ""){
+        if((parseInt(amount.value)) > 0) {
+            let income = {
+                type : "income",
+                name : amountName.value,
+                amount : parseInt(amount.value),
+            }
+            moneyStorage.push(income);
+    
+            clearInputs([amountName, amount]);
+            updateUI();
+            updateTable();
+            updateArrays();
+            createGraph(chart1);
+            showSections();
+        }else{
+            alert("Nelze zadat mínusovou hodnotu");
         }
 
-        moneyStorage.push(income);
-
-        summaryContainer.classList.remove("hide");
-        // graphContainer.classList.remove("hide");
-
-        clearInputs([amountName, amount]);
-        updateUI();
-        updateTable();
-        updateArrays();
-        createGraph(chart1);
-        showSections();
-    }else if(chooseTransaction.options[chooseTransaction.selectedIndex].value === "Vydaje" && amountName.value !== "" && amount.value !== ""){
-        let outcome = {
-            type : "outcome",
-            name : amountName.value,
-            amount : parseInt(amount.value),
+    }else if(chooseTransaction.options[chooseTransaction.selectedIndex].value === "Vydaje"
+    && amountName.value !== "" && amount.value !== ""){
+        if((parseInt(amount.value)) > 0) {
+            let outcome = {
+                type : "outcome",
+                name : amountName.value,
+                amount : parseInt(amount.value),
+            }
+            moneyStorage.push(outcome);
+    
+            clearInputs([amountName, amount]);
+            updateUI();
+            updateTable();
+            updateArrays();
+            createGraph(chart1);
+            showSections();
+        }else{
+            alert("Nelze zadat mínusovou hodnotu");
         }
 
-        moneyStorage.push(outcome);
-
-        summaryContainer.classList.remove("hide");
-        graphContainer.classList.remove("hide");
-
-        clearInputs([amountName, amount]);
-        updateUI();
-        updateTable();
-        updateArrays();
-        createGraph(chart1);
-        showSections();
     }else if(amountName.value === "" && amount.value === ""){
         alert("Vyplňte pole s názvem a částkou!");
     }else if(amountName.value !== "" && amount.value === ""){
@@ -89,21 +93,14 @@ const budgetApp = () => {
 };
 //ukaže tabulku a graf, když bude z čeho sestavit
 function showSections() {
-    if((incomeTotal > 0) && (outcomeTotal > 0)) {
+    if((incomeTotal > 0) && (outcomeTotal > 0) || outcomeTotal > 0){
         summaryContainer.classList.remove("hide");
         summaryContainer.classList.remove("differ");
         graphContainer.classList.remove("hide");
-    }
-    else if(outcomeTotal > 0) {
-        summaryContainer.classList.remove("hide");
-        summaryContainer.classList.remove("differ");
-        graphContainer.classList.remove("hide");
-    }
-    else if(incomeTotal > 0) {
+    }else if(incomeTotal > 0){
         summaryContainer.classList.remove("hide");
         summaryContainer.classList.add("differ");
-    }
-    else {
+    }else{
         summaryContainer.classList.add("hide");
         graphContainer.classList.add("hide");
     }
@@ -135,20 +132,22 @@ function updateTable(){
     while (table.hasChildNodes()) {  
         table.removeChild(table.firstChild);
     }
+
     for(let i = 0; i < moneyStorage.length; i++){
         let currentIndex = i;
         let chosenOne = moneyStorage[i];
         let nameOfType;
+
         if(chosenOne.type == "income") {
             nameOfType = "příjmy";
-        } else { nameOfType = "vydaje";}
+        }else{ nameOfType = "vydaje";}
+
         let currentTabRow = `<tr>
-                                        <td>${nameOfType}</td>
-                                        <td>${chosenOne.name}</td>
-                                        <td>${formatMoney(chosenOne.amount)}${currency}</td>
-                                        <td style="padding: 0;"><button onclick="deleteCurrentRow(${currentIndex});"><i class="fas fa-trash-alt"></i></button></td>
-                                    </tr>
-                                    `;
+                                <td>${nameOfType}</td>
+                                <td>${chosenOne.name}</td>
+                                <td>${formatMoney(chosenOne.amount)}${currency}</td>
+                                <td style="padding: 0;"><button onclick="deleteCurrentRow(${currentIndex});"><i class="fas fa-trash-alt"></i></button></td>
+                            </tr>`;
         table.innerHTML += currentTabRow;
     }
 }
@@ -176,6 +175,7 @@ function updateUI() {
         summaryEl.classList.remove("minus");
         summaryEl.classList.remove("plus");
     }
+
     localStorage.setItem("entry_list", JSON.stringify(moneyStorage));
 }
 //vypočítá příjmy a výdaje
@@ -241,7 +241,7 @@ function formatMoney(amount, decimalCount = 2, decimal = ",", thousands = " ") {
       console.log(e)
     }
 };
-
+//tlačítko enter
 amount.addEventListener('keydown', (e) => {
     if(e.which == 13){
         budgetApp();
